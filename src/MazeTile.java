@@ -1,0 +1,11 @@
+
+public enum MazeTile {
+	EMPTY,
+	START,
+	END,
+	WALL,
+	VISITED,
+	CURRENT,
+	CHILD_OF_CURRENT_NODE,
+	PATH
+}
