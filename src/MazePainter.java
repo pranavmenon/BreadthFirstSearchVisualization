@@ -7,6 +7,7 @@ import java.util.LinkedList;
 import javax.swing.JPanel;
 
 public class MazePainter extends JPanel {
+	
 	private Maze maze;
 	private LinkedList<Rectangle> cells;
 	private int numOfRow, numOfCol;
@@ -23,6 +24,7 @@ public class MazePainter extends JPanel {
 	
 	public void delayedRepaint(int timeDelay){
 		
+		//only paint after a certain amount of time has elapsed since the last repaint
 		while(true){
 			boolean canTick = (System.currentTimeMillis() - lastRepaintTime) >= timeDelay;
 			if (canTick) {

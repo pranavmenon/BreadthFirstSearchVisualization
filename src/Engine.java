@@ -11,11 +11,15 @@ public class Engine {
 	private MazePainter painter;
 	
 	public void run(){
+		
+		//get random maze
 		Maze maze = MazeGenerator.generate();
 		int numOfRow = maze.tile.length;
 		int numOfCol = maze.tile[0].length;
 		System.out.println(maze);
 		
+		
+		//initialize jpanel where maze will be drawn
 		painter = new MazePainter(maze);
 		painter.delayedRepaint(0);
 		frame = new JFrame();
@@ -24,6 +28,8 @@ public class Engine {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setVisible(true);
 		
+		
+		//small delay so that the user can see the start/end point before the bfs begins
 		try {
 			Thread.sleep(5000);
 		} catch (InterruptedException e) {
@@ -90,7 +96,6 @@ public class Engine {
 		if( (maze.tile[row][col] != MazeTile.EMPTY) && (maze.tile[row][col] != MazeTile.END) ){
 			return;
 		}
-		
 		
 		//valid tile
 		Point p = new Point(row,col,parent);

@@ -1,7 +1,3 @@
-import java.util.ArrayList;
-import java.util.Arrays;
-
-
 public class MazeGenerator {
 	
 	private static Maze maze;
@@ -19,7 +15,6 @@ public class MazeGenerator {
 		else{
 			return generatePredefinedMaze();
 		}
-		
 	}
 	
 	private static Maze generateRandomMaze(){
@@ -52,7 +47,10 @@ public class MazeGenerator {
 		return maze;
 	}
 	
+	
 	private static Maze generatePredefinedMaze(){
+		
+		//not being used right now
 		return null;
 	}
 	
