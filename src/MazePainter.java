@@ -13,7 +13,7 @@ public class MazePainter extends JPanel {
   private final int cellSize = 10;
   private long lastRepaintTime = 0;
 
-  
+
   public MazePainter(Maze m){
     maze = m;
     cells = new LinkedList<Rectangle>();
@@ -32,8 +32,8 @@ public class MazePainter extends JPanel {
       }
     }
   }
-  
-  
+
+
   @Override
   public void paintComponent(Graphics g) {
     super.paintComponent(g);
@@ -91,5 +91,5 @@ public class MazePainter extends JPanel {
     setVisible(true);
     g2d.dispose();
   }
-  
+
 }

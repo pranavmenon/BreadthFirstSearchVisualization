@@ -2,7 +2,7 @@
 public final class Utils {
 
   private Utils(){}
-  
+
   public static void delay(int milliseconds){
     try {
       Thread.sleep(milliseconds);
@@ -10,5 +10,5 @@ public final class Utils {
       e.printStackTrace();
     }
   }
-  
+
 }

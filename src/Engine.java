@@ -10,7 +10,7 @@ public class Engine {
   private static int INITIAL_MILLISECOND_DELAY = 5000;
   private static int REPAINT_MILLISECOND_DELAY = 10;
 
-  
+
   public void run(){
     //get random maze
     Maze maze = MazeGenerator.generate();
@@ -54,7 +54,7 @@ public class Engine {
     //start bfs
     while(!queue.isEmpty()){
       Point p = queue.remove();
-      
+
       //check if end point was found
       if(maze.getTileStatus(p.getRow(), p.getCol()) == MazeTileStatus.END){
         endPoint = p;
@@ -64,14 +64,14 @@ public class Engine {
       //queue children
       for(int i=p.getRow()-1; i<=p.getRow()+1; i++){
         for(int k=p.getCol()-1; k<=p.getCol()+1; k++){
-          
+
           if(maze.isTileWithinBounds(i,k) && maze.tileCanBeEntered(i,k)){
             queue.add(new Point(i,k,p));
             if(maze.getTileStatus(i,k) != MazeTileStatus.END){
               maze.setTileStatus(i, k, MazeTileStatus.CHILD_OF_CURRENT_NODE);
             }
           }
-          
+
         }
       }
 
