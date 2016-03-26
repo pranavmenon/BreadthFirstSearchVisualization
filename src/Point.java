@@ -1,6 +1,5 @@
 import lombok.Getter;
 
-
 public class Point {
 	@Getter private final int row, col;
 	@Getter private final Point parent;

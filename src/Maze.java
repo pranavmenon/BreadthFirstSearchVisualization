@@ -1,7 +1,5 @@
 import lombok.Getter;
 
-
-
 public class Maze {
   private MazeTileStatus tiles[][];
   @Getter private Point startPoint;
@@ -72,7 +70,7 @@ public class Maze {
   }
 
 
-  
+
   public boolean tileCanBeEntered(int row, int col){
     if( (getTileStatus(row, col) != MazeTileStatus.EMPTY) && (getTileStatus(row, col) != MazeTileStatus.END) ){
       return false;
@@ -81,8 +79,8 @@ public class Maze {
       return true;
     }
   }
-  
-  
+
+
 
   @Override
   public String toString(){
