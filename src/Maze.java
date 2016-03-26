@@ -61,7 +61,7 @@ public class Maze {
 
 
   public boolean isTileWithinBounds(int row, int col){
-    if(row<0 || row>tiles.length || col<0 || col>tiles[0].length){
+    if(row<0 || row>=tiles.length || col<0 || col>=tiles[0].length){
       return false;
     }
     else{

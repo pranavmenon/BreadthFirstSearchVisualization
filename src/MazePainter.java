@@ -20,7 +20,7 @@ public class MazePainter extends JPanel {
     lastRepaintTime = System.currentTimeMillis();
   }
 
-
+  
   //only paint after a certain amount of time has elapsed since the last repaint
   public void delayedRepaint(int timeDelay){
     while(true){
@@ -32,7 +32,7 @@ public class MazePainter extends JPanel {
       }
     }
   }
-
+  
 
   @Override
   public void paintComponent(Graphics g) {
@@ -44,42 +44,9 @@ public class MazePainter extends JPanel {
       for (int col = 0; col < maze.numOfColumns(); col++) {
         Rectangle cell = new Rectangle((col * cellSize), (row * cellSize), cellSize, cellSize);
         cells.add(cell);
-
-        switch(maze.getTileStatus(row, col)){
-          case EMPTY:
-            g2d.setColor(Color.WHITE);
-            g2d.fill(cell);
-            break;
-          case START:
-            g2d.setColor(Color.GREEN);
-            g2d.fill(cell);
-            break;
-          case END:
-            g2d.setColor(Color.RED);
-            g2d.fill(cell);
-            break;
-          case WALL:
-            g2d.setColor(Color.BLACK);
-            g2d.fill(cell);
-            break;
-          case VISITED:
-            g2d.setColor(Color.BLUE);
-            g2d.fill(cell);
-            break;
-          case CURRENT:
-            g2d.setColor(Color.PINK);
-            g2d.fill(cell);
-            break;
-          case CHILD_OF_CURRENT_NODE:
-            g2d.setColor(Color.YELLOW);
-            g2d.fill(cell);
-            break;
-          case PATH:
-            g2d.setColor(Color.GREEN);
-            g2d.fill(cell);
-            break;
-        }
-
+        Color requiredTileColor = getRequiredTileColor(row, col);
+        g2d.setColor(requiredTileColor);
+        g2d.fill(cell);
       }
     }
 
@@ -87,9 +54,37 @@ public class MazePainter extends JPanel {
     for(Rectangle cell : cells){
       g2d.draw(cell);
     }
-
     setVisible(true);
     g2d.dispose();
+  }
+
+
+  private Color getRequiredTileColor(int row, int col){
+    if(maze.isTileWithinBounds(row, col) == false){
+      throw new IllegalArgumentException("Row and column not within bounds of maze!");
+    }
+    else{
+      switch(maze.getTileStatus(row, col)){
+        case EMPTY:
+          return Color.WHITE;
+        case START:
+          return Color.GREEN;
+        case END:
+          return Color.RED;
+        case WALL:
+          return Color.BLACK;
+        case VISITED:
+          return Color.BLUE;
+        case CURRENT:
+          return Color.PINK;
+        case CHILD_OF_CURRENT_NODE:
+          return Color.YELLOW;
+        case PATH:
+          return Color.GREEN;
+        default:
+          throw new IllegalStateException("Invalid tile status '" + maze.getTileStatus(row, col) + "'!");
+      }
+    }
   }
 
 }

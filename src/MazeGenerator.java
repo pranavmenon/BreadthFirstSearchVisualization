@@ -9,7 +9,6 @@ public class MazeGenerator {
 
 
   public static Maze generate(){
-
     if(generateRandomMaze){
       return generateRandomMaze();
     }
