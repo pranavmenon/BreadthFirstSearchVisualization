@@ -1,5 +1,5 @@
 
-public enum MazeTile {
+public enum MazeTileStatus {
 	EMPTY,
 	START,
 	END,

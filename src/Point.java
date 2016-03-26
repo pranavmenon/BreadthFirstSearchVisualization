@@ -1,11 +1,13 @@
+import lombok.Getter;
+
 
 public class Point {
-	public int row, col;
-	public Point parent;
+	@Getter private final int row, col;
+	@Getter private final Point parent;
 	
-	public Point(int r, int c, Point parent){
-		row = r;
-		col = c;
+	public Point(int row, int col, Point parent){
+		this.row = row;
+		this.col = col;
 		this.parent = parent;
 	}
 }
